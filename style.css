@@ -1,0 +1,21 @@
+body {
+   
+    background-color: #3b3b3f !important;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.question-footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.divider{
+    height: 2px;
+    background-color: #3b3b3f;
+}
