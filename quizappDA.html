@@ -5,46 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="script.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Quizapp</a>
         </div>
     </nav>
-    <div class="container">
+    <div class="container mt-1 mb-1">
         <div class="card" style="width: 30rem;">
-            <img src="./assets/questionmark.jpg" class="card-img-top" alt="" style="filter: grayscale(100%);">
-            <div class="card-body">
-                <h5 class="card-title">Frage</h5>
-                <div class="card mb-2">
-                    <div class="card-body">
-                        This is some text within a card body.
+            <img id="image" src="./assets/img/questionmark.jpg" class="card-img-top" alt="" id="main-img"
+                style="filter: grayscale(100%);">
+
+            <div style="display: none;" id="finish">
+                <h5 class="card-title mb-3 center mt-3 fs-3">Congratulation you arrived the end off my quiz.</h5>
+                <div class='center fs-5'>You got <b id='right_answers'></b> out of <b id='b_endscreen_tag'></b> questions
+                    right.</div>
+                <div class="btn-center">
+                    <button class='btn btn-dark mt-4 mb-2' onclick='restart()'>Quiz wiederholen</button>
+                </div>
+            </div>
+
+            <div class="card-body" id="card-body">
+                <h5 class="card-title" id="question"></h5>
+                <div class="card card-selection mb-2">
+                    <div class="card-body" id="answer_1" onclick="answer('answer_1')">
+
                     </div>
                 </div>
-                <div class="card mb-2">
-                    <div class="card-body">
-                        This is some text within a card body.
+                <div class="card card-selection mb-2" onclick="answer('answer_2')">
+                    <div class="card-body" id="answer_2">
+
                     </div>
                 </div>
-                <div class="card mb-2">
-                    <div class="card-body">
-                        This is some text within a card body.
+                <div class="card card-selection mb-2" onclick="answer('answer_3')">
+                    <div class="card-body" id="answer_3">
+
                     </div>
                 </div>
-                <div class="card mb-2">
-                    <div class="card-body">
-                        This is some text within a card body.
+                <div class="card card-selection mb-2" onclick="answer('answer_4')">
+                    <div class="card-body" id="answer_4">
+
                     </div>
-                    
                 </div>
-                <div class="divider mb-2"></div>
+                <div class="progress mb-2" role="progressbar" aria-label="Animated striped example" aria-valuenow="75"
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated"
+                        style="width: 75%"></div>
+                </div>
                 <div class="question-footer">
-                   <div><b>1</b> von <b>5</b> Fragen</div><button>Nächste Frage</button>
+                    <div><b id="number-actual">1</b> von <b id="b_tag"></b> Fragen</div><button
+                        id="next_question_button" class="btn btn-dark" disabled
+                        onclick="addOneToCurrentQuestion()">Nächste Frage</button>
                 </div>
             </div>
         </div>
